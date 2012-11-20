@@ -1,0 +1,17 @@
+body {
+	background-image: linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
+	background-image: -o-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
+	background-image: -moz-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
+	background-image: -webkit-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
+	background-image: -ms-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.35, rgb(18,18,18)),
+		color-stop(0.84, rgb(56,56,56))
+	);
+
+	color: white;
+}

@@ -1,0 +1,22 @@
+{% extends 'MusicBundle::base.html.twig' %}
+{% block main %}
+	Hello {{ name|default('henk') }}!
+	{% for artist in artists %}
+	    <div class="artist">
+	    	{{ artist.name }}
+
+	    	{% for album in artist.albums %}
+	    	    <div class="album">
+	    	    	{{ album.name }}
+
+	    	    	{% for track in album.tracks %}
+	    	    	    <div class="track">
+	    	    	    	{{ track.name }}
+	    	    	    </div>
+	    	    	{% endfor %}
+
+	    	    </div>
+	    	{% endfor %}
+	    </div>
+	{% endfor %}
+{% endblock %}

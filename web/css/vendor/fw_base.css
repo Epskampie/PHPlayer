@@ -1,0 +1,257 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	
+	font-family: "Calibri", "Verdana", sans-serif;
+	line-height: 1.5em;
+	font-size: 12px;
+}
+
+/* Text styling */
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 0;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  font-weight: normal;
+  font-size: 0.75em;
+}
+h1 {
+  font-size: 2.8em;
+  line-height: 1.2em;
+}
+h2 {
+  font-size: 2em;
+  line-height: 1.2em;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+	h3 small {
+	font-size: 0.875em;
+	}
+h4, h5, h6 {
+  line-height: 1.12em;
+}
+h4 {
+  font-size: 1.12em;
+}
+	h4 small {
+	font-size: 1em;
+	}
+h5 {
+  font-size: 1em;
+}
+	h5 small {
+	font-size: 1em;
+	}
+h6 {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+	h6 small {
+		font-size: 1em;
+	}
+
+p {
+	margin: 0 0 0.5em;
+}
+	
+/* Columns, based on 12 collumn layout */
+.col-1 {
+	float: left;
+	width: 8.33%;
+}
+.col-2 {
+	float: left;
+	width: 16.66%;
+}
+.col-3 {
+	float: left;
+	width: 25%;
+}
+.col-4 {
+	float: left;
+	width: 33.33%;
+}
+.col-6 {
+	float: left;
+	width: 50%;
+}
+.col-8 {
+	float: left;
+	width: 66.66%;
+}
+.col-10 {
+	float: left;
+	width: 83.33%;
+}
+
+/* Utility classes */
+.clear {
+	clear: both;
+}
+.clear-left {
+	clear: left;
+}
+.clear-right {
+	clear: right;
+}
+
+.contain {
+	overflow: hidden;
+}
+
+.relative {
+	position: relative;
+}
+
+.fullwidth {
+	width: 100%;
+}
+
+.hidden {
+	display: none;
+}
+
+.pad {
+	padding: 20px;
+}
+	.pad.narrow {
+		padding: 10px;
+	}
+	.pad.wide {
+		padding: 30px;
+	}
+	
+hr {
+	height: 0px;
+	padding: 0;
+	margin: 0;
+	
+	border: 0px;
+	border-bottom: 1px solid #cdcdcd;
+}
+.hr {
+	border-bottom: 1px solid #cdcdcd;
+}
+.vr {
+	border-right: 1px solid #cdcdcd;
+}
+
+/* Rounding */
+.round {
+	border-radius: 5px;
+}
+.round-top {
+	border-radius: 5px 5px 0 0;
+}
+.round-left {
+	border-radius: 5px 0 0 5px;
+}
+.round-bottom {
+	border-radius: 0 0 5px 5px;
+}
+.round-right {
+	border-radius: 0 5px 5px 0;
+}
+
+/* Spacers */
+.h-spacer {
+	height: 100%;
+	width: 20px;
+}
+	.h-spacer.narrow {
+		width: 10px;
+	}
+	.h-spacer.wide {
+		width: 30px;
+	}
+.v-spacer {
+	width: 100%;
+	height: 20px;
+}
+	.v-spacer.narrow {
+		height: 10px;
+	}
+	.v-spacer.wide {
+		height: 30px;
+	}
+
+/* Form styling */
+input[type=text],
+textarea {
+	border: 1px solid grey;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/* Img styling */
+img.polaroid {
+	border: 10px solid white;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+	img.polaroid.narrow {
+		border-width: 5px;
+	}
+	img.polaroid.wide {
+		border-width: 20px;
+	}
+
+/* Aligning */
+.alignright {
+	float: right;
+	margin-left: 10px;
+}
+.alignleft {
+	float: left;
+	margin-right: 10px;
+}
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+/* Debugging */
+.blue {
+	background: blue;
+}
+.red {
+	background: red;
+}
+.green {
+	background: green;
+}
+
+/* Lists */
+ul.clean {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+ul.horizontal li {
+	display: inline-block;
+	/*IE7*/
+	zoom: 1;
+	*display:inline;
+}
+ul.btn-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	ul.btn-list li {
+		padding-bottom: 5px;
+	}

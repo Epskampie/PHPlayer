@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>{{ title|default('PHPlayer') }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/vendor/fw_base.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/global.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+
+	<script type="text/javascript" src="{{ asset('js/vendor/jquery-1.8.3.min.js') }}"></script>
+
+	{% block head %}{% endblock %}
+
+</head>
+<body>
+
+	<div class="topBar">
+		{% block topBar %}{% endblock %}
+	</div>
+
+	<div class="main">
+		{% block main %}{% endblock %}
+	</div>
+
+	<div class="bottomBar"></div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.uploadArea {
+	margin: 100px;
+	padding: 50px;
+
+	background: rgba(204,204,204,0.24) center center no-repeat;
+	border-radius: 10px;
+	border: 10px dashed #b7b7b7;
+	text-align: center;
+	min-height: 500px;
+}
+.uploadArea.showMessage {
+	background-image: url('../img/upload_message.png');
+}

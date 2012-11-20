@@ -1,0 +1,8 @@
+MusicBundle:
+    resource: "@MusicBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+_welcome:
+    pattern:  /
+    defaults: { _controller: MusicBundle:Music:index }

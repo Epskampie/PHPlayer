@@ -1,0 +1,24 @@
+{% extends 'MusicBundle::base.html.twig' %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/upload.css') }}" />
+
+	<script type="text/javascript" src="{{ asset('js/vendor/jquery.ui.widget.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/vendor/jquery.iframe-transport.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/vendor/jquery.fileupload.js') }}"></script>
+
+	<script type="text/javascript" src="{{ asset('js/upload.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+	<div class="uploadArea showMessage">
+		<div class="inputs">
+			<input id="artist" value="Artist" />
+			<input id="album" value="Album" />
+			<br>
+			<button id="applyMove">Apply</button>
+		</div>
+		<div id="files">
+		</div>
+	</div>
+{% endblock %}
