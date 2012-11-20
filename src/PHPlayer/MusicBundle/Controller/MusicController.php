@@ -66,7 +66,7 @@ class MusicController extends BaseController
     }
 
     /**
-     * @Route("/hello/{name}")
+     * @Route("/")
      * @Template()
      */
     public function indexAction()

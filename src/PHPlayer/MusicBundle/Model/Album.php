@@ -21,6 +21,21 @@ class Album {
         return $this->getArtist()->getWebPath().'/'.$this->name;
     }
 
+    public function hasArt()
+    {
+    	return file_exists($this->getAbsolutePath().'/'.'folder.jpg');
+    }
+
+    public function getArtWebPath()
+    {
+    	return $this->getWebPath().'/'.'folder.jpg';
+    }
+
+    public function hasTracks() 
+    {
+    	return count($this->tracks) > 0;
+    }
+
 	// ============ Accessors ==========
 	public function getName() {
 	    return $this->name;

@@ -1,3 +1,10 @@
+a {
+	text-decoration: none;
+}
+a:visited {
+	color: inherit;
+}
+
 body {
 	background-image: linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
 	background-image: -o-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
@@ -15,3 +22,12 @@ body {
 
 	color: white;
 }
+
+.topBar {
+	padding: 14px 40px;
+	text-transform: uppercase;
+}
+	.topBar a {
+		color: #10b3ff;
+		font-size: 24px;
+	}

@@ -1,22 +1,46 @@
 {% extends 'MusicBundle::base.html.twig' %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/music.css') }}" />
+	<script type="text/javascript" src="{{ asset('js/music.js') }}"></script>
+{% endblock %}
+
+{% block topBar %}
+	<a href="{{ path('phplayer_music_upload_index') }}">Upload</a>
+{% endblock %}
+
 {% block main %}
-	Hello {{ name|default('henk') }}!
 	{% for artist in artists %}
-	    <div class="artist">
-	    	{{ artist.name }}
+    	{% for album in artist.albums %}
 
-	    	{% for album in artist.albums %}
+    		{% if album.hasTracks %}
 	    	    <div class="album">
-	    	    	{{ album.name }}
 
-	    	    	{% for track in album.tracks %}
-	    	    	    <div class="track">
-	    	    	    	{{ track.name }}
-	    	    	    </div>
-	    	    	{% endfor %}
+	    	    	{% if album.hasArt %}
+	    	    		<img src="{{ asset(album.artWebPath) }}" />
+	    	    	{% endif %}
+
+	    	    	<div class="artistName">
+	    	    		{{ artist.name }}
+	    	    	</div>
+	    	    	<div class="albumName">
+		    	    		{{ album.name }}
+	    	    	</div>
+
+	    	    	<div class="tracks">
+		    	    	{% for track in album.tracks %}
+		    	    	    <div class="track" data-url="{{ asset(track.webPath) }}">
+		    	    	    		<a class="icon play"></a>
+		    	    	    		<a class="icon enque"></a>
+		    	    	    		{{ track.viewName }}
+		    	    	    </div>
+		    	    	{% endfor %}
+		    	    </div>
 
 	    	    </div>
-	    	{% endfor %}
-	    </div>
+    		{% endif %}
+
+    	{% endfor %}
 	{% endfor %}
+
 {% endblock %}
