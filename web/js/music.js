@@ -3,7 +3,7 @@ $(function() {
 	var player = document.createElement('audio');
 	window.que = new Que();
 
-	// $('.tracks').hide();
+	$('.tracks').hide();
 
 	// Interaction
 	$('.album').click(function() {
@@ -12,13 +12,11 @@ $(function() {
 
 	$('.track .play').click(function(e) {
 		e.stopPropagation();
-
 		play($(this).closest('.track'));
 	});
 
 	$('.track .enque').click(function(e) {
 		e.stopPropagation();
-
 		enque($(this).closest('.track'));
 	});
 
@@ -34,6 +32,9 @@ $(function() {
 		var track = elem2track(trackElem);
 
 		que.add(track);
+		if (que.length() == 1) {
+			que.play();
+		}
 	}
 
 	function elem2track(trackElem) {
