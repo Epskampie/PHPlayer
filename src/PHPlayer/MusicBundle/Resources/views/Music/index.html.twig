@@ -6,9 +6,16 @@
 {% endblock %}
 
 {% block topBar %}
-	<a href="{{ path('phplayer_music_upload_index') }}">Upload</a>
+	<a href="{{ path('phplayer_music_upload_index') }}"><i class="icon upload"></i>Upload</a>
 {% endblock %}
 
 {% block main %}
 	{% include "MusicBundle:Music:_list.html.twig" %}
+
+	<div class="bottomBar">
+		<div class="queWrapper">
+			<div id="que" class="que">
+			</div>
+		</div>
+	</div>
 {% endblock %}

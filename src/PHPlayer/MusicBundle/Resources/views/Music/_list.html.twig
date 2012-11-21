@@ -1,47 +1,53 @@
 {% for artist in artists %}
-	{% for album in artist.albums %}
 
-		{% if album.hasTracks %}
-    	    <div class="album">
+	<div class="artist" data-name="{{ artist.name }}">
 
-    	    	<div class="albumInfo">
-	    	    	{% if album.hasArt %}
-	    	    		<img src="{{ asset(album.artWebPath) }}" />
-	    	    	{% endif %}
+		{% for album in artist.albums %}
+
+			{% if album.hasTracks %}
+	    	    <div class="album" data-name="{{ album.name }}" data-art-url="{{ asset(album.artWebPath) }}">
+
+	    	    	<div class="albumInfo">
+		    	    	{% if album.hasArt %}
+		    	    		<img src="{{ asset(album.artWebPath) }}" />
+		    	    	{% endif %}
 
 
-	    	    	<div class="artistName">
-	    	    		{{ artist.name }}
+		    	    	<div class="artistName">
+		    	    		{{ artist.name }}
+		    	    	</div>
+		    	    	
+		    	    	<a class="icon upload" href="{{ path('phplayer_music_upload_index', {artistName: artist.name, albumName: album.name}) }}"></a>
+
+		    	    	<div class="albumName">
+		    	    		{{ album.name }}
+		    	    	</div>
+
 	    	    	</div>
-	    	    	
-	    	    	<a class="icon upload" href="{{ path('phplayer_music_upload_index', {artistName: artist.name, albumName: album.name}) }}"></a>
 
-	    	    	<div class="albumName">
-	    	    		{{ album.name }}
-	    	    	</div>
+	    	    	<div class="tracks">
+		    	    	{% for track in album.tracks %}
+		    	    		{% if track.isAudioFile %}
+			    	    	    <div class="track" data-url="{{ asset(track.webPath) }}" data-name="{{ track.name }}" data-view-name="{{ track.viewName }}" >
+			    	    	    		<span class="playActions">
+				    	    	    		<a class="icon play"></a>
+				    	    	    		<a class="icon enque"></a>
+				    	    	    	</span>
+			    	    	    		{{ track.viewName }}
+			    	    	    		<span class="fileActions">
+				    	    	    		<a class="rename">rename</a>
+				    	    	    		<a class="delete" href="{{ path('phplayer_music_upload_deletefile', {artist: artist.name, album: album.name, track: track.name}) }}">delete</a>
+				    	    	    	</span>
+			    	    	    </div>
+		    	    		{% endif %}
+		    	    	{% endfor %}
+		    	    </div>
 
-    	    	</div>
-
-    	    	<div class="tracks">
-	    	    	{% for track in album.tracks %}
-	    	    		{% if track.isAudioFile %}
-		    	    	    <div class="track" data-url="{{ asset(track.webPath) }}" data-name="{{ track.name }}">
-		    	    	    		<span class="playActions">
-			    	    	    		<a class="icon play"></a>
-			    	    	    		<a class="icon enque"></a>
-			    	    	    	</span>
-		    	    	    		{{ track.viewName }}
-		    	    	    		<span class="fileActions">
-			    	    	    		<a class="rename">rename</a>
-			    	    	    		<a class="delete" href="{{ path('phplayer_music_upload_deletefile', {artist: artist.name, album: album.name, track: track.name}) }}">delete</a>
-			    	    	    	</span>
-		    	    	    </div>
-	    	    		{% endif %}
-	    	    	{% endfor %}
 	    	    </div>
+			{% endif %}
 
-    	    </div>
-		{% endif %}
+		{% endfor %}
 
-	{% endfor %}
+	</div>
+
 {% endfor %}

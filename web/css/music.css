@@ -1,3 +1,6 @@
+body {
+	padding-bottom: 200px;
+}
 .album {
 	padding: 10px 30px 10px 200px;
 	min-height: 120px;
@@ -12,7 +15,6 @@
 	background-image: -moz-linear-gradient(bottom, rgba(255,255,255,0.23) 100%, rgba(0,0,0,0.23) 0%);
 	background-image: -webkit-linear-gradient(bottom, rgba(255,255,255,0.23) 100%, rgba(0,0,0,0.23) 0%);
 	background-image: -ms-linear-gradient(bottom, rgba(255,255,255,0.23) 100%, rgba(0,0,0,0.23) 0%);
-
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
@@ -32,7 +34,6 @@
 		background-image: url('../img/play_icon.png');
 	}
 	.album .upload.icon {
-		background-image: url('../img/upload_icon.png');
 		float: right;
 	}
 	.album .playActions {
@@ -55,4 +56,54 @@
 	}
 	.album .track {
 		line-height: 1.2em;
+	}
+
+.bottomBar {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+	background-image: linear-gradient(bottom, rgb(28,28,28) 90%, rgb(93,93,93) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(28,28,28) 90%, rgb(93,93,93) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(28,28,28) 90%, rgb(93,93,93) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(28,28,28) 90%, rgb(93,93,93) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(28,28,28) 90%, rgb(93,93,93) 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.9, rgb(28,28,28)),
+		color-stop(1, rgb(93,93,93))
+	);
+}
+
+.queWrapper {
+	overflow-x: scroll;
+}
+
+#que {
+	height: 180px;
+	width: 2000px;
+}
+	#que .tile {
+		float: left;
+		margin: 10px;
+		text-align: center;	
+		width: 120px;
+	}
+		#que .tile img {
+			width: 100px;
+		}
+	#que .tile .trackViewName {
+		color: #e4e4e4;
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 1.08em;
+	}
+	#que .tile .artistName {
+		color: #a5a5a5;
+		font-weight: bold;
+		font-size: 11px;
+		text-transform: uppercase;
 	}

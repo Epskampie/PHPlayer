@@ -32,7 +32,7 @@ body {
 		font-size: 24px;
 	}
 
-.album .icon {
+.icon {
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
@@ -42,4 +42,7 @@ body {
 	
 	cursor: pointer;
 	background: center top no-repeat;
+}
+.upload.icon {
+	background-image: url('../img/upload_icon.png');
 }
