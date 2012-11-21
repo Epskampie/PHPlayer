@@ -14,9 +14,8 @@ use PHPlayer\MusicBundle\Model\Track;
 class MusicController extends BaseController
 {
 
-    private function getArtists() {
+    private function getArtists($dir) {
         $artists = array();
-        $dir = FileHelper::getAbsolutePath('music');
         $files = scandir($dir);
         foreach ($files as $file) {
             if (!in_array($file, array('.', '..'))){
@@ -71,7 +70,12 @@ class MusicController extends BaseController
      */
     public function indexAction()
     {
-        return array('artists' => $this->getArtists());
+        $dir = FileHelper::getAbsolutePath('music');
+        if (file_exists($dir) && is_dir($dir)) {
+            return array('artists' => $this->getArtists());
+        } else {
+            return $this->redirect($this->generateUrl('phplayer_music_upload_index'));
+        }
     }
 
     /**

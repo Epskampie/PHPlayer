@@ -11,3 +11,42 @@
 .uploadArea.showMessage {
 	background-image: url('../img/upload_message.png');
 }
+.inputs {
+	color: #10b3ff;
+	font-size: 24px;
+}
+
+input {
+	padding: 5px;
+
+	border: 0;
+	border-radius: 5px;
+	background: rgba(0,0,0,0.1);
+	color: #10b3ff;
+	font-size: 24px;
+}
+button {
+	padding: 2px 10px;
+	margin: 10px;
+	font-size: 19px;
+	color: #5a5a5a;
+
+	border: 0;
+	border-radius: 5px;
+
+	background-image: linear-gradient(bottom, rgb(24,217,255) 100%, rgb(8,144,255) 0%);
+	background-image: -o-linear-gradient(bottom, rgb(24,217,255) 100%, rgb(8,144,255) 0%);
+	background-image: -moz-linear-gradient(bottom, rgb(24,217,255) 100%, rgb(8,144,255) 0%);
+	background-image: -webkit-linear-gradient(bottom, rgb(24,217,255) 100%, rgb(8,144,255) 0%);
+	background-image: -ms-linear-gradient(bottom, rgb(24,217,255) 100%, rgb(8,144,255) 0%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(1, rgb(24,217,255)),
+		color-stop(0, rgb(8,144,255))
+	);
+}
+	input#artist {
+		text-align: right;
+	}
