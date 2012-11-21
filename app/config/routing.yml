@@ -6,3 +6,6 @@ MusicBundle:
 _welcome:
     pattern:  /
     defaults: { _controller: MusicBundle:Music:index }
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
