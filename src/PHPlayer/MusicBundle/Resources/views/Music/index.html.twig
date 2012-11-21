@@ -10,37 +10,5 @@
 {% endblock %}
 
 {% block main %}
-	{% for artist in artists %}
-    	{% for album in artist.albums %}
-
-    		{% if album.hasTracks %}
-	    	    <div class="album">
-
-	    	    	{% if album.hasArt %}
-	    	    		<img src="{{ asset(album.artWebPath) }}" />
-	    	    	{% endif %}
-
-	    	    	<div class="artistName">
-	    	    		{{ artist.name }}
-	    	    	</div>
-	    	    	<div class="albumName">
-		    	    		{{ album.name }}
-	    	    	</div>
-
-	    	    	<div class="tracks">
-		    	    	{% for track in album.tracks %}
-		    	    	    <div class="track" data-url="{{ asset(track.webPath) }}">
-		    	    	    		<a class="icon play"></a>
-		    	    	    		<a class="icon enque"></a>
-		    	    	    		{{ track.viewName }}
-		    	    	    </div>
-		    	    	{% endfor %}
-		    	    </div>
-
-	    	    </div>
-    		{% endif %}
-
-    	{% endfor %}
-	{% endfor %}
-
+	{% include "MusicBundle:Music:_list.html.twig" %}
 {% endblock %}

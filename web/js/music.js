@@ -57,22 +57,23 @@ $(function() {
 
 		this.length = function() {
 			return tracks.length;
-		}
+		};
 
 		this.add = function(track) {
 			tracks.push(track);
 		};
 
 		this.clear = function() {
+			player.pause();
 			tracks = [];
 			index = 0;
-		}
+		};
 
 		this.playNext = function() {
 			player.pause();
 			index = Math.min(index+1, tracks.length);
 			this.play();
-		}
+		};
 
 		this.play = function() {
 			var track = tracks[index];
@@ -80,10 +81,9 @@ $(function() {
 				player.src = track.filename;
 				player.play();
 			}
-		}
+		};
 
-
-	};
+	}
 
 	function Track() {
 		this.album = '';

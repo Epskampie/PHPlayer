@@ -21,7 +21,7 @@ class FileHelper
 		// Only allow a few characters
 		$clean = "";
 		$matches = null;
-		$returnValue = preg_match_all('#[a-zA-Z.0-9 _-]#', $dirty, $matches);
+		$returnValue = preg_match_all('/[\w.0-9 _-]/u', $dirty, $matches);
 		if ($returnValue) {
 			$clean = implode('', $matches[0]);
 		}

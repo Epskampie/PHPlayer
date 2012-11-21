@@ -33,6 +33,15 @@ class Track {
     	return $result;
     }
 
+    public function isAudioFile() {
+    	foreach (array('mp3', 'ogg', 'wav') as $ext) {
+    		if (stripos($this->name, $ext) !== false) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+
 	// ============ Accessors ==========
 
 	public function getAlbum() {

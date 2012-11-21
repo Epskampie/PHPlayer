@@ -7,7 +7,7 @@ use PHPlayer\MusicBundle\Helper\FileHelper;
 class Album {
 	private $artist;
 	private $name;
-	private $tracks = array();
+	private $tracks = NULL;
 
 	// ============ Utility ==========
 
@@ -33,7 +33,10 @@ class Album {
 
     public function hasTracks() 
     {
-    	return count($this->tracks) > 0;
+    	foreach ($this->getTracks() as $track) {
+    		if ($track->isAudioFile()) return true;
+    	}
+    	return false;
     }
 
 	// ============ Accessors ==========
@@ -54,6 +57,22 @@ class Album {
 	}
 
 	public function getTracks() {
+		if ($this->tracks === NULL) {
+			$this->tracks = array();
+			$dir = $this->getAbsolutePath();
+	        $files = scandir($dir);
+	        foreach ($files as $file) {
+	            if (!in_array($file, array('.', '..'))){
+	                if (is_file($dir.'/'.$file)) {
+	                    $track = new Track();
+	                    $track->setName($file);
+	                    
+	                    $this->addTrack($track);
+	                }
+	            }
+	        }
+		}
+
 	    return $this->tracks;
 	}
 	
@@ -62,6 +81,9 @@ class Album {
 	}
 
 	public function addTrack($track) {
+		if ($this->tracks === NULL) {
+			$this->tracks = array();
+		}
 		$this->tracks[] = $track;
 		$track->setAlbum($this);
 	}

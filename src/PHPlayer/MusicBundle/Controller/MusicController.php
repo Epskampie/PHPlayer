@@ -24,44 +24,11 @@ class MusicController extends BaseController
                     $artists[] = $artist;
                     $artist->setName($file);
 
-                    $this->getAlbums($artist);
                 }
             }
         }
 
         return $artists;
-    }
-
-    private function getAlbums($artist) {
-        $dir = $artist->getAbsolutePath();
-        $files = scandir($dir);
-        foreach ($files as $file) {
-            if (!in_array($file, array('.', '..'))){
-                if (is_dir($dir.'/'.$file)) {
-                    $album = new Album();
-                    $album->setName($file);
-                    
-                    $artist->addAlbum($album);
-
-                    $this->getTracks($album);
-                }
-            }
-        }
-    }
-
-    private function getTracks($album) {
-        $dir = $album->getAbsolutePath();
-        $files = scandir($dir);
-        foreach ($files as $file) {
-            if (!in_array($file, array('.', '..'))){
-                if (is_file($dir.'/'.$file)) {
-                    $track = new Track();
-                    $track->setName($file);
-                    
-                    $album->addTrack($track);
-                }
-            }
-        }
     }
 
     /**
@@ -72,7 +39,7 @@ class MusicController extends BaseController
     {
         $dir = FileHelper::getAbsolutePath('music');
         if (file_exists($dir) && is_dir($dir)) {
-            return array('artists' => $this->getArtists());
+            return array('artists' => $this->getArtists($dir));
         } else {
             return $this->redirect($this->generateUrl('phplayer_music_upload_index'));
         }

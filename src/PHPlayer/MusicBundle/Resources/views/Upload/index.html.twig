@@ -16,10 +16,11 @@
 
 {% block main %}
 	<div class="uploadArea showMessage">
-		<div class="inputs">
-			<input id="artist" value="Artist" />
+		<div class="albumArt"></div>
+		<div id="inputs" class="inputs">
+			<input id="artist" value="{{ artistName }}" />
 			-
-			<input id="album" value="Album" />
+			<input id="album" value="{{ albumName }}" />
 			<br>
 			<button id="applyMove">APPLY</button>
 		</div>

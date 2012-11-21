@@ -28,26 +28,24 @@
 		width: 120px;
 		height: 120px;
 	}
-	.album .icon {
-		display: inline-block;
-		margin-right: 5px;
-		vertical-align: middle;
-		position: relative;
-		top: -2px;
-		width: 25px;
-		height: 25px;
-		
-		cursor: pointer;
-		background: center top no-repeat;
+	.album .play.icon {
+		background-image: url('../img/play_icon.png');
 	}
-		.album .play.icon {
-			background-image: url('../img/play_icon.png');
-		}
+	.album .upload.icon {
+		background-image: url('../img/upload_icon.png');
+		float: right;
+	}
+	.album .playActions {
+
+	}
 		.album .enque.icon {
 			background-image: url('../img/enque_icon.png');
 		}
-	.album .artistName {
-		text-transform: uppercase;
+		.album .artistName {
+			text-transform: uppercase;
+		}
+	.album .fileActions{
+		display: none;
 	}
 	.album .albumName {
 		color: #e4e4e4;

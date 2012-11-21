@@ -1,15 +1,33 @@
+.topBar {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 14px 0;
+}
+
 .uploadArea {
-	margin: 100px;
+	margin: 50px auto 20px;
 	padding: 50px;
+	position: relative;
+	max-width: 800px;
+	min-height: 500px;
 
 	background: rgba(204,204,204,0.24) center center no-repeat;
 	border-radius: 10px;
 	border: 10px dashed #b7b7b7;
 	text-align: center;
-	min-height: 500px;
 }
-.uploadArea.showMessage {
-	background-image: url('../img/upload_message.png');
+	.uploadArea.showMessage {
+		background-image: url('../img/upload_message.png');
+	}
+.albumArt {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-size: 100%;
+	opacity: 0.2;
+	z-index: -1;
 }
 .inputs {
 	color: #10b3ff;
@@ -24,6 +42,7 @@ input {
 	background: rgba(0,0,0,0.1);
 	color: #10b3ff;
 	font-size: 24px;
+	width: 48%;
 }
 button {
 	padding: 2px 10px;
@@ -50,3 +69,32 @@ button {
 	input#artist {
 		text-align: right;
 	}
+
+.album {
+	margin: 20px 0;
+}
+	.albumInfo {
+		display: none;
+	}
+	.track {
+		color: #a5a5a5;
+		font-size: 24px;
+		font-weight: bold;
+		text-align: left;
+		line-height: 1.3em;
+		padding: 0 5px;
+	}
+	.track:nth-child(2n) {
+		background: rgba(0,0,0,0.1);
+		border-radius: 5px;
+	}
+		.track .playActions {
+			display: none;
+		}
+
+		.track .fileActions a {
+			font-weight: normal;
+			color: #10B3FF;
+			float: right;
+			margin-left: 10px;
+		}

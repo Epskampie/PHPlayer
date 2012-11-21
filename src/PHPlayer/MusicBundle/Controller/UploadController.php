@@ -17,85 +17,6 @@ use PHPlayer\MusicBundle\Model\Track;
  */
 class UploadController extends BaseController
 {
-    /**
-     * @Route("/")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        return array();
-    }
-
-
-    /**
-     * @Route("/file")
-     * @Template()
-     */
-    public function fileAction()
-    {
-    	$request = $this->getRequest();
-
-    	$form = $this->createFormBuilder(null, array('csrf_protection' => false))
-            ->add('myfile', 'file')
-            ->add('artist')
-            ->add('album')
-            ->getForm();
-
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-
-            if ($form->isValid()) {
-            	
-            	$file = $form['myfile']->getData();
-            	$fileName = FileHelper::cleanFileName($file);
-            	if ($this->isImage($fileName)) {
-            		$fileName = 'folder.jpg';
-            	}
-            	$artist = FileHelper::cleanFileNameString($form['artist']->getData());
-            	$album = FileHelper::cleanFileNameString($form['album']->getData());
-
-            	FileHelper::moveUpload($file, $this->getDir($artist, $album).'/'.$fileName);
-
-                return new Response('success!');
-            }
-            return new Response('not valid');
-        }
-
-        return array('form' => $form->createView());
-    }
-
-    /**
-     * @Route("/move/{oldArtist}/{oldAlbum}/{newArtist}/{newAlbum}")
-     * @Template()
-     */
-    public function moveFilesAction($oldArtist, $oldAlbum, $newArtist, $newAlbum)
-    {
-    	FileHelper::moveFiles(
-    		$this->getAbsDir($oldArtist, $oldAlbum),
-    		$this->getAbsDir($newArtist, $newAlbum)
-		);
-
-		return new Response('ok');
-    }
-
-    /**
-     * @Route("/files/{artist}/{album}")
-     * @Template()
-     */
-    public function filesAction($artist, $album)
-    {
-    	$results = array();
-
-    	$dir = $this->getAbsDir($artist, $album);
-    	foreach (scandir($dir) as $file) {
-    		if (is_file($dir.'/'.$file)) {
-    			$results[] = $file;
-    		}
-    	}
-
-    	return array('files' => $results);
-    }
-
     private function getDir($artist, $album)
     {
     	$artist = FileHelper::cleanFileNameString($artist);
@@ -116,4 +37,214 @@ class UploadController extends BaseController
     	return false;
     }
 
+    private function getArtist($artistName, $albumName) {
+        $artist = new Artist();
+        $artist->setName($artistName);
+
+        $album = new Album();
+        $album->setName($albumName);
+        $artist->addAlbum($album);
+
+        return $artist;
+    }
+
+    // ============= Actions =============
+
+    /**
+     * @Route("/index/{artistName}/{albumName}",
+     *     defaults={"artistName" = "Artist", "albumName"="Album"})
+     * @Template()
+     */
+    public function indexAction($artistName, $albumName)
+    {
+        return array(
+            'artistName' => $artistName,
+            'albumName' => $albumName
+        );
+    }
+
+    /**
+     * Upload a file.
+     * 
+     * @Route("/file", options={"expose"=true})
+     * @Template()
+     */
+    public function fileAction()
+    {
+        $request = $this->getRequest();
+
+        $form = $this->createFormBuilder(null, array('csrf_protection' => false))
+            ->add('myfile', 'file')
+            ->add('artist')
+            ->add('album')
+            ->getForm();
+
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+                
+                $file = $form['myfile']->getData();
+                $fileName = FileHelper::cleanFileName($file);
+                if ($this->isImage($fileName)) {
+                    $fileName = 'folder.jpg';
+                }
+                $artist = FileHelper::cleanFileNameString($form['artist']->getData());
+                $album = FileHelper::cleanFileNameString($form['album']->getData());
+
+                FileHelper::moveUpload($file, $this->getDir($artist, $album).'/'.$fileName);
+
+                return new Response('success!');
+            }
+            return new Response('not valid');
+        }
+
+        return array('form' => $form->createView());
+    }
+
+    /**
+     * @Route("/move/{oldArtist}/{oldAlbum}/{newArtist}/{newAlbum}", options={"expose"=true})
+     * @Template()
+     */
+    public function moveFilesAction($oldArtist, $oldAlbum, $newArtist, $newAlbum)
+    {
+        FileHelper::moveFiles(
+            $this->getAbsDir($oldArtist, $oldAlbum),
+            $this->getAbsDir($newArtist, $newAlbum)
+        );
+
+        return new Response('ok');
+    }
+
+    /**
+     * @Route("/list_files/{artist}/{album}", options={"expose"=true})
+     * @Template()
+     */
+    public function listFilesAction($artist, $album)
+    {
+        $artist = $this->getArtist($artist, $album);
+
+        return array('artists' => array($artist));
+    }
+
+    /**
+     * @Route("/get_art/{artist}/{album}", options={"expose"=true})
+     * @Template()
+     */
+    public function getArtUrlAction($artist, $album)
+    {
+        $albums = $this->getArtist($artist, $album)->getAlbums();
+
+        return array('album' => $albums[0]);
+    }
+
+    /**
+     * Guess artist & album based on id3 tags.
+     * 
+     * @Route("/guess_filenames/{artist}/{album}", options={"expose"=true})
+     */
+    public function guessFilenamesAction($artist, $album)
+    {
+        $albums = $this->getArtist($artist, $album)->getAlbums();
+        $album = $albums[0];
+        $tracks = $album->getTracks();
+
+        $status = 'default';
+        $newArtist = 'Artist';
+        $newAlbum = 'Album';
+
+        foreach ($tracks as $track) {
+            $id3 = new Id3Info($track->getAbsolutePath());
+            if ($id3->valid && $id3->artist && $id3->album) {
+                $status = 'rename';
+                $newArtist = $id3->artist;
+                $newAlbum = $id3->album;
+                break;
+            }
+        }
+
+        return $this->json(array(
+            'status' => $status,
+            'newArtist' => $newArtist,
+            'newAlbum' => $newAlbum
+        ));
+    }
+
+
+    /**
+     * @Route("/delete_file/{artist}/{album}/{track}", options={"expose"=true})
+     */
+    public function deleteFileAction($artist, $album, $track)
+    {
+        $dir = $this->getAbsDir($artist, $album);
+        $track = FileHelper::cleanFileNameString($track);
+
+        if (file_exists($dir.'/'.$track)) {
+            unlink($dir.'/'.$track);
+        }
+
+        return $this->redirect($this->generateUrl('phplayer_music_upload_index', array(
+            'artistName' => $artist,
+            'albumName' => $album,
+        )));
+    }
+
+    /**
+     * @Route("/rename_file/{artist}/{album}/{track}/{newTrackName}", options={"expose"=true})
+     */
+    public function renameFileAction($artist, $album, $track, $newTrackName)
+    {
+        $dir = $this->getAbsDir($artist, $album);
+        $track = FileHelper::cleanFileNameString($track);
+        $newTrackName = FileHelper::cleanFileNameString($newTrackName);
+
+        if (file_exists($dir.'/'.$track) && !file_exists($dir.'/'.$newTrackName)) {
+            rename($dir.'/'.$track, $dir.'/'.$newTrackName);
+
+            return $this->json(array(
+                'status' => 'ok',
+            ));
+        }
+
+        return $this->json(array(
+            'status' => 'error',
+            'error' => 'file not found',
+        ));
+    }
+
+
+}
+
+class Id3Info { 
+    public $valid = false;
+
+    public $title;
+    public $artist;
+    public $album;
+    public $year;
+    public $comment;
+    public $genre;
+
+    public function __construct($file) { 
+        if (file_exists($file)) {
+            
+            $id_start=filesize($file)-128; 
+            $fp=fopen($file,"r"); 
+            fseek($fp,$id_start); 
+            $tag=fread($fp,3); 
+
+            if ($tag == "TAG") { 
+                $this->valid = true; 
+
+                $this->title = trim(fread($fp,30));
+                $this->artist = trim(fread($fp,30));
+                $this->album = trim(fread($fp,30));
+                $this->year = trim(fread($fp,4));
+                $this->comment = trim(fread($fp,30));
+                $this->genre = trim(fread($fp,1));
+            }
+
+            fclose($fp); 
+        } 
+    } 
 }
