@@ -170,100 +170,6 @@
         ]
     },
     {
-        "name": "symfony/symfony",
-        "version": "2.1.x-dev",
-        "version_normalized": "2.1.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git://github.com/symfony/symfony.git",
-            "reference": "b3c3e89462d058afc35c59cdd71a4b6c4b6cdbcc"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/symfony/symfony/archive/b3c3e89462d058afc35c59cdd71a4b6c4b6cdbcc.zip",
-            "reference": "b3c3e89462d058afc35c59cdd71a4b6c4b6cdbcc",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3",
-            "doctrine/common": ">2.2,<2.4-dev",
-            "twig/twig": ">=1.9.1,<2.0-dev"
-        },
-        "replace": {
-            "symfony/doctrine-bridge": "self.version",
-            "symfony/monolog-bridge": "self.version",
-            "symfony/propel1-bridge": "self.version",
-            "symfony/swiftmailer-bridge": "self.version",
-            "symfony/twig-bridge": "self.version",
-            "symfony/framework-bundle": "self.version",
-            "symfony/security-bundle": "self.version",
-            "symfony/twig-bundle": "self.version",
-            "symfony/web-profiler-bundle": "self.version",
-            "symfony/browser-kit": "self.version",
-            "symfony/class-loader": "self.version",
-            "symfony/config": "self.version",
-            "symfony/console": "self.version",
-            "symfony/css-selector": "self.version",
-            "symfony/dependency-injection": "self.version",
-            "symfony/dom-crawler": "self.version",
-            "symfony/event-dispatcher": "self.version",
-            "symfony/filesystem": "self.version",
-            "symfony/finder": "self.version",
-            "symfony/form": "self.version",
-            "symfony/http-foundation": "self.version",
-            "symfony/http-kernel": "self.version",
-            "symfony/locale": "self.version",
-            "symfony/options-resolver": "self.version",
-            "symfony/process": "self.version",
-            "symfony/routing": "self.version",
-            "symfony/security": "self.version",
-            "symfony/serializer": "self.version",
-            "symfony/templating": "self.version",
-            "symfony/translation": "self.version",
-            "symfony/validator": "self.version",
-            "symfony/yaml": "self.version"
-        },
-        "require-dev": {
-            "doctrine/dbal": ">=2.2,<2.4-dev",
-            "doctrine/orm": ">=2.2.3,<2.4-dev",
-            "doctrine/data-fixtures": "1.0.*",
-            "propel/propel1": "dev-master",
-            "monolog/monolog": "1.*"
-        },
-        "time": "2012-11-20 13:21:33",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.1-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Symfony": "src/",
-                "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            }
-        ],
-        "description": "The Symfony PHP framework",
-        "homepage": "http://symfony.com",
-        "keywords": [
-            "framework"
-        ]
-    },
-    {
         "name": "friendsofsymfony/jsrouting-bundle",
         "version": "1.0.3",
         "version_normalized": "1.0.3.0",
@@ -363,73 +269,6 @@
             "debug",
             "i18n",
             "text"
-        ]
-    },
-    {
-        "name": "kriswallsmith/assetic",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "http://github.com/kriswallsmith/assetic.git",
-            "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/kriswallsmith/assetic/archive/d6203098559cf9fc90e2890c10533d0adad33bd0.zip",
-            "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0",
-            "shasum": ""
-        },
-        "require": {
-            "symfony/process": ">=2.1.0,<2.3-dev",
-            "php": ">=5.3.1"
-        },
-        "require-dev": {
-            "twig/twig": ">=1.6.0,<2.0",
-            "leafo/lessphp": "*",
-            "leafo/scssphp": "*",
-            "ptachoire/cssembed": "*",
-            "leafo/scssphp-compass": "*"
-        },
-        "suggest": {
-            "twig/twig": "Assetic provides the integration with the Twig templating engine",
-            "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
-            "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
-            "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
-            "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
-        },
-        "time": "2012-11-07 10:47:32",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Assetic": "src/"
-            },
-            "files": [
-                "src/functions.php"
-            ]
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Kris Wallsmith",
-                "email": "kris.wallsmith@gmail.com",
-                "homepage": "http://kriswallsmith.net/"
-            }
-        ],
-        "description": "Asset Management for PHP",
-        "homepage": "https://github.com/kriswallsmith/assetic",
-        "keywords": [
-            "assets",
-            "compression",
-            "minification"
         ]
     },
     {
@@ -1067,6 +906,167 @@
             "security",
             "secure",
             "expression"
+        ]
+    },
+    {
+        "name": "kriswallsmith/assetic",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "http://github.com/kriswallsmith/assetic.git",
+            "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/kriswallsmith/assetic/archive/d6203098559cf9fc90e2890c10533d0adad33bd0.zip",
+            "reference": "d6203098559cf9fc90e2890c10533d0adad33bd0",
+            "shasum": ""
+        },
+        "require": {
+            "symfony/process": ">=2.1.0,<2.3-dev",
+            "php": ">=5.3.1"
+        },
+        "require-dev": {
+            "twig/twig": ">=1.6.0,<2.0",
+            "leafo/lessphp": "*",
+            "leafo/scssphp": "*",
+            "ptachoire/cssembed": "*",
+            "leafo/scssphp-compass": "*"
+        },
+        "suggest": {
+            "twig/twig": "Assetic provides the integration with the Twig templating engine",
+            "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+            "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+            "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+            "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
+        },
+        "time": "2012-11-07 10:47:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Assetic": "src/"
+            },
+            "files": [
+                "src/functions.php"
+            ]
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kris Wallsmith",
+                "email": "kris.wallsmith@gmail.com",
+                "homepage": "http://kriswallsmith.net/"
+            }
+        ],
+        "description": "Asset Management for PHP",
+        "homepage": "https://github.com/kriswallsmith/assetic",
+        "keywords": [
+            "assets",
+            "compression",
+            "minification"
+        ]
+    },
+    {
+        "name": "symfony/symfony",
+        "version": "2.1.x-dev",
+        "version_normalized": "2.1.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git://github.com/symfony/symfony.git",
+            "reference": "aa124288676648f727370876ccdf6dd7f208dc46"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/symfony/symfony/archive/aa124288676648f727370876ccdf6dd7f208dc46.zip",
+            "reference": "aa124288676648f727370876ccdf6dd7f208dc46",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "doctrine/common": ">2.2,<2.4-dev",
+            "twig/twig": ">=1.9.1,<2.0-dev"
+        },
+        "replace": {
+            "symfony/doctrine-bridge": "self.version",
+            "symfony/monolog-bridge": "self.version",
+            "symfony/propel1-bridge": "self.version",
+            "symfony/swiftmailer-bridge": "self.version",
+            "symfony/twig-bridge": "self.version",
+            "symfony/framework-bundle": "self.version",
+            "symfony/security-bundle": "self.version",
+            "symfony/twig-bundle": "self.version",
+            "symfony/web-profiler-bundle": "self.version",
+            "symfony/browser-kit": "self.version",
+            "symfony/class-loader": "self.version",
+            "symfony/config": "self.version",
+            "symfony/console": "self.version",
+            "symfony/css-selector": "self.version",
+            "symfony/dependency-injection": "self.version",
+            "symfony/dom-crawler": "self.version",
+            "symfony/event-dispatcher": "self.version",
+            "symfony/filesystem": "self.version",
+            "symfony/finder": "self.version",
+            "symfony/form": "self.version",
+            "symfony/http-foundation": "self.version",
+            "symfony/http-kernel": "self.version",
+            "symfony/locale": "self.version",
+            "symfony/options-resolver": "self.version",
+            "symfony/process": "self.version",
+            "symfony/routing": "self.version",
+            "symfony/security": "self.version",
+            "symfony/serializer": "self.version",
+            "symfony/templating": "self.version",
+            "symfony/translation": "self.version",
+            "symfony/validator": "self.version",
+            "symfony/yaml": "self.version"
+        },
+        "require-dev": {
+            "doctrine/dbal": ">=2.2,<2.4-dev",
+            "doctrine/orm": ">=2.2.3,<2.4-dev",
+            "doctrine/data-fixtures": "1.0.*",
+            "propel/propel1": "dev-master",
+            "monolog/monolog": "1.*"
+        },
+        "time": "2012-11-21 15:37:43",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Symfony": "src/",
+                "SessionHandlerInterface": "src/Symfony/Component/HttpFoundation/Resources/stubs"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "The Symfony PHP framework",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "framework"
         ]
     }
 ]
