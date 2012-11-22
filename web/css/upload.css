@@ -26,6 +26,7 @@
 	left: 0;
 	right: 0;
 	background-size: 100%;
+	background-position: center center;
 	opacity: 0.2;
 	z-index: -2;
 }

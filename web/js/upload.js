@@ -28,6 +28,8 @@ $(function() {
 
 	function sendFile(file) {
 		uploadCount++;
+		indicator.set(file.name, 0.0);
+
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', uploadURL);
 		xhr.onload = function(e) {
