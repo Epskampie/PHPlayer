@@ -5,6 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/vendor/fw_base.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/global.css') }}" />
 
+	<script type="text/javascript">
+		// prevent console.log errors
+		if (typeof(console) === 'undefined') {
+		    var console = {}
+		    console.log = console.error = console.info = console.debug = console.warn = console.trace = console.dir = console.dirxml = console.group = console.groupEnd = console.time = console.timeEnd = console.assert = console.profile = function() {};
+		}
+	</script>
 	<script type="text/javascript" src="{{ asset('js/vendor/jquery-1.8.3.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 	<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
