@@ -1,5 +1,5 @@
 body {
-	padding-bottom: 200px;
+	padding-bottom: 500px;
 }
 .topBar .upload {
 	position: relative;
@@ -10,6 +10,7 @@ body {
 	padding: 10px 30px 10px 200px;
 	min-height: 120px;
 	position: relative;
+	clear: both;
 
 	font-weight: bold;
 	color: #a5a5a5;	
@@ -40,6 +41,7 @@ body {
 	}
 	.album .upload.icon {
 		float: right;
+		margin-top: 38px;
 	}
 	.album .playActions {
 
@@ -50,17 +52,21 @@ body {
 		.album .artistName {
 			text-transform: uppercase;
 		}
+	.album .playActions {
+	}
 	.album .fileActions{
 		display: none;
 	}
 	.album .albumName {
 		color: #e4e4e4;
 		font-size: 48px;
-		line-height: 1.7em;
-		padding-bottom: 30px;
+		line-height: 1.1em;
+		padding: 18px 0 30px;
 	}
 	.album .track {
-		line-height: 1.2em;
+		margin: 10px 0;
+		line-height: 1.1em;
+		clear: both;
 	}
 
 .bottomBar {
@@ -142,3 +148,23 @@ body {
 		font-size: 11px;
 		text-transform: uppercase;
 	}
+
+@media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
+	a.icon {
+		width: 40px;
+		height: 40px;
+		background-size: 100%;
+	}
+	.album .playActions {
+		float: left;
+	}
+	.topBar,
+	.upload.icon
+	{
+		display: none;
+	}
+	#que .tile:hover .play {
+		display: none;
+	}
+
+}

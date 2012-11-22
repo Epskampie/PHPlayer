@@ -112,6 +112,7 @@ class UploadController extends BaseController
             $this->getAbsDir($oldArtist, $oldAlbum),
             $this->getAbsDir($newArtist, $newAlbum)
         );
+        rmdir($this->getAbsDir($oldArtist, $oldAlbum));
 
         return new Response('ok');
     }
