@@ -1,6 +1,11 @@
 body {
 	padding-bottom: 200px;
 }
+.topBar .upload {
+	position: relative;
+	top: 1px;
+	margin-right: 4px;
+}
 .album {
 	padding: 10px 30px 10px 200px;
 	min-height: 120px;
@@ -83,7 +88,6 @@ body {
 }
 
 #que {
-	height: 180px;
 	width: 2000px;
 }
 	#que .tile {
@@ -91,9 +95,40 @@ body {
 		margin: 10px;
 		text-align: center;	
 		width: 120px;
+		position: relative;
 	}
 		#que .tile img {
 			width: 100px;
+		}
+		#que .active.tile img {
+			box-shadow: 0 0 20px rgba(16, 179, 255, 0.7);
+		}
+
+		#que .tile .play,
+		#que .tile .pause {
+			position: absolute;
+			top: 20px;
+			left: 25px;
+			width: 60px;
+			height: 60px;
+			background: top right no-repeat;
+			display: none;
+		}
+		#que .tile .play {
+			background-image: url('../img/play_icon_medium.png');
+		}
+		#que .tile .pause {
+			left: 23px;
+			background-image: url('../img/pause_icon_medium.png');
+		}
+		#que .playing.tile .pause {
+			display: block;
+		}
+		#que .tile:hover .play {
+			display: block;
+		}
+		#que .playing.tile:hover .play {
+			display: none;
 		}
 	#que .tile .trackViewName {
 		color: #e4e4e4;

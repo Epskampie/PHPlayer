@@ -1,6 +1,6 @@
 $(function() {
 
-	var player = document.createElement('audio');
+	window.player = document.createElement('audio');
 	window.que = new Que();
 
 	$('.tracks').hide();
@@ -46,7 +46,6 @@ $(function() {
 		track.artist = $(trackElem).closest('.artist').data('name');
 		track.album = $(trackElem).closest('.album').data('name');
 		track.artUrl = $(trackElem).closest('.album').data('art-url');
-		console.log('HA', track.artUrl);
 
 		return track;
 	}
@@ -79,46 +78,63 @@ $(function() {
 			tile.append('<img src="' + track.artUrl + '" />');
 			tile.append('<div class="trackViewName">' + track.viewName + '</div>');
 			tile.append('<div class="artistName">' + track.artist + '</div>');
+			tile.append('<div class="play">');
+			tile.append('<div class="pause">');
 
 			tile.data('track', track);
 			var self = this;
 			tile.click(function() {
 				var track = $(this).data('track');
-				self.playTrack(track);
+				self.clickTrack(track);
 			});
 
 			return tile;
 		};
 
 		this.clear = function() {
-			player.pause();
+			this.pause();
 			tracks = [];
 			index = 0;
 			queElem.empty();
 		};
 
 		this.playNext = function() {
-			player.pause();
+			this.pause();
 			index = Math.min(index+1, tracks.length);
 			this.play();
 		};
 
+		this.pause = function() {
+			player.pause();
+			$('.tile').removeClass('playing');
+		};
+
 		this.play = function(i) {
+			var oldIndex = index;
 			if (i !== undefined) {
 				index = i;
 			}
 			var track = tracks[index];
+			$('.tile').removeClass('active playing');
 			if (track) {
-				player.src = track.filename;
+				if (index != oldIndex || player.readyState === 0) {
+					player.src = track.filename;
+				}
 				player.play();
+				track.tile.addClass('active playing');
 			}
 		};
 
-		this.playTrack = function(track) {
+		this.clickTrack = function(track) {
 			for (var i=0; i < tracks.length; i++) {
 				if (tracks[i] == track) {
-					this.play(i);
-					return;
+
+					if (index == i && !player.paused) {
+						this.pause();
+					} else {
+						this.play(i);
+					}
+
 				}
 			}
 		};

@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="{{ asset('js/vendor/jquery.iframe-transport.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/vendor/jquery.fileupload.js') }}"></script>
 
+	<script type="text/javascript" src="{{ asset('js/progress_indicator.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/upload.js') }}"></script>
 {% endblock %}
 
@@ -17,6 +18,7 @@
 {% block main %}
 	<div class="uploadArea showMessage">
 		<div class="albumArt"></div>
+		<canvas id="progressIndicator" width="224" height="224"></canvas>
 		<div id="inputs" class="inputs">
 			<input id="artist" value="{{ artistName }}" />
 			-

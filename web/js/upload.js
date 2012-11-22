@@ -4,6 +4,7 @@ $(function() {
 
 	var artist = $('#artist').val();
 	var album = $('#album').val();
+	window.indicator = new ProgressIndicator($('canvas').get(0));
 	var uploadCount = 0;
 	var nameChanged = false;
 
@@ -21,9 +22,6 @@ $(function() {
 		var files = e.originalEvent.dataTransfer.files;
 		for (var i=0; i < files.length; i++) {
 			var file = files[i];
-
-			console.log(file);
-
 			sendFile(file);
 		}
 	});
@@ -52,8 +50,8 @@ $(function() {
 			}
 			update();
 		};
-		xhr.upload.onprogress = function(event) {
-			handleProgress(event);
+		xhr.upload.onprogress = function(e) {
+			indicator.set(file.name, e.loaded / e.total);
 		};
 		xhr.upload.onloadstart = function(event) {
 		};
@@ -66,12 +64,6 @@ $(function() {
 		formData.append('form[artist]', artist);
 		formData.append('form[album]', album);
 		xhr.send(formData);
-	}
-
-	// Showing progress
-
-	function handleProgress(event) {
-		console.log('Progress!');
 	}
 
 	// Moving uploads
@@ -122,28 +114,26 @@ $(function() {
 	// Showing most recent status
 
 	function update() {
-		var url = Routing.generate('phplayer_music_upload_listfiles', {
-			artist: artist, 
-			album: album
-		});
 		$.ajax({
-			url: url,
+			url: Routing.generate('phplayer_music_upload_listfiles', {
+				artist: artist, 
+				album: album
+			}),
 			success: function(data) {
-				data = data.trim();
-				if (data) {
-					$('#files').html(data);
+				elems = $(data);
+				if (elems.find('.track').length > 0) {
+					$('#files').html(elems);
 					$('#inputs').slideDown();
 					$('.uploadArea').removeClass('showMessage');
 				}
 			}
 		});
 
-		var artUrl = Routing.generate('phplayer_music_upload_getarturl', {
-			artist: artist, 
-			album: album
-		});
 		$.ajax({
-			url: artUrl,
+			url: Routing.generate('phplayer_music_upload_getarturl', {
+				artist: artist, 
+				album: album
+			}),
 			success: function(data) {
 				if (data) {
 					$('.albumArt').css({
@@ -192,9 +182,12 @@ $(function() {
 
 	// Rename
 
-	$('.track .rename').live('click', function() { 
+	$('.track .rename').live('click', function(e) { 
+		e.preventDefault();
+
 		var filename = $(this).closest('.track').data('name');
 		var newFilename = prompt('Choose new filename:', filename);
+
 		if (newFilename) {
 			console.log(filename, newFilename);
 			var url = Routing.generate('phplayer_music_upload_renamefile', {

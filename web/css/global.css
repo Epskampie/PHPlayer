@@ -1,8 +1,9 @@
 a {
+	color: #10b3ff;
 	text-decoration: none;
 }
-a:visited {
-	color: inherit;
+a:hover {
+	color: white;
 }
 
 body {
@@ -11,7 +12,6 @@ body {
 	background-image: -moz-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
 	background-image: -webkit-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
 	background-image: -ms-linear-gradient(bottom, rgb(18,18,18) 35%, rgb(56,56,56) 84%);
-
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
@@ -28,7 +28,6 @@ body {
 	text-transform: uppercase;
 }
 	.topBar a {
-		color: #10b3ff;
 		font-size: 24px;
 	}
 
