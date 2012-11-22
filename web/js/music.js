@@ -20,6 +20,22 @@ $(function() {
 		enque($(this).closest('.track'));
 	});
 
+	$('.albumName .play').click(function(e) {
+		e.stopPropagation();
+		que.clear();
+		$(this).closest('.artist').find('.track').each(function(index, elem) {
+			enque($(elem));
+		});
+		que.play();
+	});
+
+	$('.albumName .enque').click(function(e) {
+		e.stopPropagation();
+		$(this).closest('.artist').find('.track').each(function(index, elem) {
+			enque($(elem));
+		});
+	});
+
 	function play(trackElem) {
 		var track = elem2track(trackElem);
 
@@ -93,6 +109,7 @@ $(function() {
 
 		this.clear = function() {
 			this.pause();
+			player.src = '';
 			tracks = [];
 			index = 0;
 			queElem.empty();
@@ -117,7 +134,7 @@ $(function() {
 			var track = tracks[index];
 			$('.tile').removeClass('active playing');
 			if (track) {
-				if (index != oldIndex || player.readyState === 0) {
+				if (index != oldIndex || player.readyState === 0 || i === undefined) {
 					player.src = track.filename;
 				}
 				player.play();
@@ -128,16 +145,15 @@ $(function() {
 		this.clickTrack = function(track) {
 			for (var i=0; i < tracks.length; i++) {
 				if (tracks[i] == track) {
-
 					if (index == i && !player.paused) {
 						this.pause();
 					} else {
 						this.play(i);
 					}
-
 				}
 			}
 		};
+
 	}
 
 	function Track() {
