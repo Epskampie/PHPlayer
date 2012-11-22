@@ -59,8 +59,6 @@ $(function() {
 		// prepare FormData
 		var formData = new FormData();
 		formData.append('form[myfile]', file);
-		console.log(artist);
-		console.log(album);
 		formData.append('form[artist]', artist);
 		formData.append('form[album]', album);
 		xhr.send(formData);
@@ -86,15 +84,13 @@ $(function() {
 	});
 
 	function moveUploads(oldArtist, oldAlbum, newArtist, newAlbum) {
-		var url = Routing.generate('phplayer_music_upload_movefiles', {
-			oldArtist: oldArtist,
-			oldAlbum: oldAlbum,
-			newArtist: newArtist,
-			newAlbum: newAlbum
-		});
-		console.log('url: ', url);
 		$.ajax({
-			url: url,
+			url: Routing.generate('phplayer_music_upload_movefiles', {
+				oldArtist: oldArtist,
+				oldAlbum: oldAlbum,
+				newArtist: newArtist,
+				newAlbum: newAlbum
+			}),
 			method: 'post',
 			success: function() {
 				artist = newArtist;
@@ -121,8 +117,8 @@ $(function() {
 			}),
 			success: function(data) {
 				elems = $(data);
-				if (elems.find('.track').length > 0) {
-					$('#files').html(elems);
+				$('#files').html(elems);
+				if (elems.find('.track').length > 0 && uploadCount === 0) {
 					$('#inputs').slideDown();
 					$('.uploadArea').removeClass('showMessage');
 				}
@@ -157,13 +153,11 @@ $(function() {
 
 		console.log('Guessing filenames');
 
-		var guessUrl = Routing.generate('phplayer_music_upload_guessfilenames', {
-			artist: artist, 
-			album: album
-		});
-		console.log(guessUrl);
 		$.ajax({
-			url: guessUrl,
+			url: Routing.generate('phplayer_music_upload_guessfilenames', {
+				artist: artist, 
+				album: album
+			}),
 			success: function(data) {
 				console.log(data);
 				if (data && data.status == 'rename') {
@@ -189,15 +183,12 @@ $(function() {
 		var newFilename = prompt('Choose new filename:', filename);
 
 		if (newFilename) {
-			console.log(filename, newFilename);
-			var url = Routing.generate('phplayer_music_upload_renamefile', {
+			$.post(Routing.generate('phplayer_music_upload_renamefile', {
 				artist: artist, 
 				album: album,
 				track: filename,
 				newTrackName: newFilename
-			});
-			console.log(url);
-			$.post(url, function() {
+			}), function() {
 				update();
 			});
 		}
