@@ -12,7 +12,7 @@ Features
 * Easy drag-and-drop uploading of new albums.
 * Artist and album name automatically guessed from id3 tag.
 * Rename & delete albums, artists & tracks.
-* Playback through htm5 audio element, working in any modern browser.
+* Playback through html5 audio element, working in any modern browser. No plugins required.
 * Support for mp3 and OGG audio files.
 * No database required.
 * Simple installation. Just copy files and make 3 folder writable.
