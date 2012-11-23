@@ -4,8 +4,7 @@ PHPlayer
 PHPlayer allows you to easily upload your music to your server, and then play it through any modern webbrowser.
 A personal grooveshark, if you will.
 
-![Uploading and playback on desktop](https://raw.github.com/Epskampie/PHPlayer/master/docs/img/desktop.png "Uploading and playback on desktop")
-![On mobile](https://raw.github.com/Epskampie/PHPlayer/master/docs/img/mobile.png "Works on mobile too!")
+![Uploading and playback on desktop Works on mobile too!](https://raw.github.com/Epskampie/PHPlayer/master/docs/img/screengrabs.png)
 
 Features
 --------
