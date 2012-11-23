@@ -28,9 +28,9 @@ Installation
 
 * Download the latest distribution, and unpack the files under the webroot of your webserver.
 * [Linux only]: Make the following folders in the phplayer directory world readable/writable:
-** phplayer/app/cache
-** phplayer/app/logs
-** phplayer/web/uploads
+    * phplayer/app/cache
+    * phplayer/app/logs
+    * phplayer/web/uploads
 * Browse to http://YOUR-HOST-NAME/music
 * Upload some albums.
 * Enjoy your music online!
