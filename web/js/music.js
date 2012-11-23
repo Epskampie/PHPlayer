@@ -24,7 +24,7 @@ $(function() {
 	$('.albumName .play').click(function(e) {
 		e.stopPropagation();
 		que.clear();
-		$(this).closest('.artist').find('.track').each(function(index, elem) {
+		$(this).closest('.album').find('.track').each(function(index, elem) {
 			enque($(elem));
 		});
 		que.play();
@@ -32,7 +32,7 @@ $(function() {
 
 	$('.albumName .enque').click(function(e) {
 		e.stopPropagation();
-		$(this).closest('.artist').find('.track').each(function(index, elem) {
+		$(this).closest('.album').find('.track').each(function(index, elem) {
 			enque($(elem));
 		});
 	});
