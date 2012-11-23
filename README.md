@@ -6,6 +6,8 @@ A personal grooveshark, if you will.
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/ju0aGmaRQ_4" frameborder="0" allowfullscreen></iframe>
 
+![Frontwise logo](http://frontwise.com/img/logo.png)
+
 Features
 --------
 
