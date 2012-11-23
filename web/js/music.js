@@ -5,10 +5,11 @@ $(function() {
 
 	$('.tracks').hide();
 
-	// Interaction
 	$('.album').click(function() {
 		$(this).find('.tracks').slideToggle();
 	});
+
+	// Buttons
 
 	$('.track .play').click(function(e) {
 		e.stopPropagation();
@@ -71,6 +72,13 @@ $(function() {
 		console.log('song ended');
 		que.playNext();
 	});
+
+	// Prevent leaving page when playing 
+	window.onbeforeunload = function(){
+		if (!player.paused) {
+			return 'This will stop the music.';
+		}
+	};
 
 	function Que() {
 		var index = 0;

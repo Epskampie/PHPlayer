@@ -1,0 +1,2 @@
+Js that confirms exit on leaving while playing.
+dotdotdot function that shortens long tracknames in tiles.
