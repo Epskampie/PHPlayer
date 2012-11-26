@@ -196,4 +196,9 @@ $(function() {
 		}
 	});
 
+	// Confirm on certain actions
+	$('a.confirm').click(function() {
+		return confirm('Are you sure?');
+	});
+
 });

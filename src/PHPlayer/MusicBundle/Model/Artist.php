@@ -22,6 +22,14 @@ class Artist {
         return FileHelper::getWebPath($this->PARENT_DIR.'/'.$this->name);
     }
 
+    public function hasTracks() 
+    {
+    	foreach ($this->getAlbums() as $album) {
+    		if ($album->hasTracks()) return true;
+    	}
+    	return false;
+    }
+
 	// ============ Accessors ==========
 
 	public function getName() {

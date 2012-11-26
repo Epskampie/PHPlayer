@@ -28,6 +28,7 @@ body {
 	text-transform: uppercase;
 }
 	.topBar a {
+		margin-right: 2em;
 		font-size: 24px;
 	}
 

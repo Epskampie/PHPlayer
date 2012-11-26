@@ -12,6 +12,10 @@
 {% block main %}
 	{% include "MusicBundle:Music:_list.html.twig" %}
 
+	{% if not haveTracks %}
+		<p>No tracks found! Why don't you try <a href="{{ path('phplayer_music_upload_index') }}">uploading</a> some albums?</p>
+	{% endif %}
+
 	<div class="bottomBar">
 		<div class="queWrapper">
 			<div id="que" class="que">

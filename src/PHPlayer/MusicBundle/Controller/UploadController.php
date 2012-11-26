@@ -215,6 +215,28 @@ class UploadController extends BaseController
     }
 
     /**
+     * @Route("/delete_album/{artist}/{album}", options={"expose"=true})
+     */
+    public function deleteAlbumAction($artist, $album)
+    {
+        $artist = FileHelper::cleanFileNameString($artist);
+        $album = FileHelper::cleanFileNameString($album);
+
+        $dir = $this->getAbsDir($artist, $album);
+
+        if (is_dir($dir)) {
+            foreach (scandir($dir) as $file) {
+                if (is_file($dir.'/'.$file)) {
+                    unlink($dir.'/'.$file);
+                }
+            }
+            rmdir($dir);
+        }
+
+        return $this->redirect($this->generateUrl('phplayer_music_upload_index'));
+    }
+
+    /**
      * @Route("/rename_file/{artist}/{album}/{track}/{newTrackName}", options={"expose"=true})
      */
     public function renameFileAction($artist, $album, $track, $newTrackName)

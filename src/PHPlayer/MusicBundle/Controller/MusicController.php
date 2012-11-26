@@ -38,8 +38,21 @@ class MusicController extends BaseController
     public function indexAction()
     {
         $dir = FileHelper::getAbsolutePath('music');
+
         if (file_exists($dir) && is_dir($dir)) {
-            return array('artists' => $this->getArtists($dir));
+            $artists = $this->getArtists($dir);
+            $haveTracks = false;
+            foreach ($artists as $artist) {
+                if ($artist->hasTracks()) {
+                    $haveTracks = true;
+                    break;
+                }
+            }
+
+            return array(
+                'artists' => $artists,
+                'haveTracks' => $haveTracks,
+            );
         } else {
             return $this->redirect($this->generateUrl('phplayer_music_upload_index'));
         }

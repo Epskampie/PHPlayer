@@ -13,6 +13,7 @@
 
 {% block topBar %}
 	<a href="{{ path('phplayer_music_music_index') }}">Back</a>
+	<a href="{{ path('phplayer_music_upload_deletealbum', { artist: artistName, album: albumName }) }}" class="confirm">Delete album</a>
 {% endblock %}
 
 {% block main %}
