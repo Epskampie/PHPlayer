@@ -21,7 +21,8 @@ class UploadController extends BaseController
     {
     	$artist = FileHelper::cleanFileNameString($artist);
     	$album = FileHelper::cleanFileNameString($album);
-    	return 'music/'.$artist.'/'.$album;
+    	
+        return 'music/'.$artist.'/'.$album;
     }
 
     private function getAbsDir($artist, $album) {
@@ -38,6 +39,9 @@ class UploadController extends BaseController
     }
 
     private function getArtist($artistName, $albumName) {
+        $artistName = FileHelper::cleanFileNameString($artistName);
+        $albumName = FileHelper::cleanFileNameString($albumName);
+
         $artist = new Artist();
         $artist->setName($artistName);
 
@@ -57,6 +61,9 @@ class UploadController extends BaseController
      */
     public function indexAction($artistName, $albumName)
     {
+        $artistName = FileHelper::cleanFileNameString($artistName);
+        $albumName = FileHelper::cleanFileNameString($albumName);
+
         return array(
             'artistName' => $artistName,
             'albumName' => $albumName
@@ -108,6 +115,11 @@ class UploadController extends BaseController
      */
     public function moveFilesAction($oldArtist, $oldAlbum, $newArtist, $newAlbum)
     {
+        $oldArtist = FileHelper::cleanFileNameString($oldArtist);
+        $oldAlbum = FileHelper::cleanFileNameString($oldAlbum);
+        $newArtist = FileHelper::cleanFileNameString($newArtist);
+        $newAlbum = FileHelper::cleanFileNameString($newAlbum);
+
         FileHelper::moveFiles(
             $this->getAbsDir($oldArtist, $oldAlbum),
             $this->getAbsDir($newArtist, $newAlbum)
@@ -123,6 +135,9 @@ class UploadController extends BaseController
      */
     public function listFilesAction($artist, $album)
     {
+        $artist = FileHelper::cleanFileNameString($artist);
+        $album = FileHelper::cleanFileNameString($album);
+
         $artist = $this->getArtist($artist, $album);
 
         return array('artists' => array($artist));
@@ -134,6 +149,9 @@ class UploadController extends BaseController
      */
     public function getArtUrlAction($artist, $album)
     {
+        $artist = FileHelper::cleanFileNameString($artist);
+        $album = FileHelper::cleanFileNameString($album);
+
         $albums = $this->getArtist($artist, $album)->getAlbums();
 
         return array('album' => $albums[0]);
@@ -146,6 +164,9 @@ class UploadController extends BaseController
      */
     public function guessFilenamesAction($artist, $album)
     {
+        $artist = FileHelper::cleanFileNameString($artist);
+        $album = FileHelper::cleanFileNameString($album);
+
         $albums = $this->getArtist($artist, $album)->getAlbums();
         $album = $albums[0];
         $tracks = $album->getTracks();
@@ -177,8 +198,11 @@ class UploadController extends BaseController
      */
     public function deleteFileAction($artist, $album, $track)
     {
-        $dir = $this->getAbsDir($artist, $album);
+        $artist = FileHelper::cleanFileNameString($artist);
+        $album = FileHelper::cleanFileNameString($album);
         $track = FileHelper::cleanFileNameString($track);
+
+        $dir = $this->getAbsDir($artist, $album);
 
         if (file_exists($dir.'/'.$track)) {
             unlink($dir.'/'.$track);
@@ -195,9 +219,12 @@ class UploadController extends BaseController
      */
     public function renameFileAction($artist, $album, $track, $newTrackName)
     {
-        $dir = $this->getAbsDir($artist, $album);
+        $artist = FileHelper::cleanFileNameString($artist);
+        $album = FileHelper::cleanFileNameString($album);
         $track = FileHelper::cleanFileNameString($track);
         $newTrackName = FileHelper::cleanFileNameString($newTrackName);
+
+        $dir = $this->getAbsDir($artist, $album);
 
         if (file_exists($dir.'/'.$track) && !file_exists($dir.'/'.$newTrackName)) {
             rename($dir.'/'.$track, $dir.'/'.$newTrackName);
