@@ -11,6 +11,7 @@ use PHPlayer\MusicBundle\Helper\FileHelper;
 use PHPlayer\MusicBundle\Model\Artist;
 use PHPlayer\MusicBundle\Model\Album;
 use PHPlayer\MusicBundle\Model\Track;
+use PHPlayer\MusicBundle\Model\UploadedFile;
 
 /**
  * @Route("/upload")
@@ -80,7 +81,9 @@ class UploadController extends BaseController
     {
         $request = $this->getRequest();
 
-        $form = $this->createFormBuilder(null, array('csrf_protection' => false))
+        $uploadedFile = new UploadedFile();
+
+        $form = $this->createFormBuilder($uploadedFile, array('csrf_protection' => false))
             ->add('myfile', 'file')
             ->add('artist')
             ->add('album')
@@ -91,19 +94,19 @@ class UploadController extends BaseController
 
             if ($form->isValid()) {
                 
-                $file = $form['myfile']->getData();
+                $file = $uploadedFile->myfile;
                 $fileName = FileHelper::cleanFileName($file);
                 if ($this->isImage($fileName)) {
                     $fileName = 'folder.jpg';
                 }
-                $artist = FileHelper::cleanFileNameString($form['artist']->getData());
-                $album = FileHelper::cleanFileNameString($form['album']->getData());
+                $artist = FileHelper::cleanFileNameString($uploadedFile->artist);
+                $album = FileHelper::cleanFileNameString($uploadedFile->album);
 
                 FileHelper::moveUpload($file, $this->getDir($artist, $album).'/'.$fileName);
 
                 return new Response('success!');
             }
-            return new Response('not valid');
+            return new Response('invalid');
         }
 
         return array('form' => $form->createView());
