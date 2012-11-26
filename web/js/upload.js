@@ -197,7 +197,7 @@ $(function() {
 	});
 
 	// Confirm on certain actions
-	$('a.confirm').click(function() {
+	$('a.confirm').live('click', function() {
 		return confirm('Are you sure?');
 	});
 

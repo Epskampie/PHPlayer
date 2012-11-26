@@ -31,16 +31,20 @@
 
 	    	    	<div class="tracks">
 		    	    	{% for track in album.tracks %}
-		    	    		{% if track.isAudioFile %}
+		    	    		{% if track.isAudioFile or showAllFiles|default(false) %}
 			    	    	    <div class="track" data-url="{{ asset(track.webPath) }}" data-name="{{ track.name }}" data-view-name="{{ track.viewName }}" >
 		    	    	    		<span class="playActions">
 			    	    	    		<a class="icon play"></a>
 			    	    	    		<a class="icon enque"></a>
 			    	    	    	</span>
-		    	    	    		{{ track.viewName }}
+			    	    	    	{% if showAllFiles|default(false) %}
+		    	    	    			{{ track.name }}
+	    	    	    			{% else %}
+	    	    	    				{{ track.viewName }}
+			    	    	    	{% endif %}
 		    	    	    		<span class="fileActions">
 			    	    	    		<a class="rename" href="#">rename</a>
-			    	    	    		<a class="delete" href="{{ path('phplayer_music_upload_deletefile', {artist: artist.name, album: album.name, track: track.name}) }}">delete</a>
+			    	    	    		<a class="delete confirm" href="{{ path('phplayer_music_upload_deletefile', {artist: artist.name, album: album.name, track: track.name}) }}">delete</a>
 			    	    	    	</span>
 			    	    	    </div>
 		    	    		{% endif %}

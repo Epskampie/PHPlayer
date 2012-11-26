@@ -192,7 +192,6 @@ class UploadController extends BaseController
         ));
     }
 
-
     /**
      * @Route("/delete_file/{artist}/{album}/{track}", options={"expose"=true})
      */
