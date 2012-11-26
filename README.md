@@ -20,17 +20,17 @@ Features
 Requirements
 ------------
 
-* A server with a webserver capable of running php files.
+* A webserver capable of running php files. (Apache, IIS)
 * A very basic understanding of how to install a webapp on your server.
 
 Installation
 ------------
 
-* Download the latest distribution, and unpack the files under the webroot of your webserver.
+* [Download the latest distribution](https://github.com/downloads/Epskampie/PHPlayer/PHPlayer_0.1.0.zip), and unpack the files under the webroot of your webserver.
 * [Linux only]: Make the following folders in the phplayer directory world readable/writable:
     * phplayer/app/cache
     * phplayer/app/logs
     * phplayer/web/uploads
-* Browse to http://YOUR-HOST-NAME/music
+* Browse to http://YOUR-HOST-NAME/phplayer
 * Upload some albums.
 * Enjoy your music online!

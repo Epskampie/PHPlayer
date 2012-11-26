@@ -1,2 +1,6 @@
-Js that confirms exit on leaving while playing.
 dotdotdot function that shortens long tracknames in tiles.
+Upload: correct dir with #artist/album.
+	Move to after uploading to allow for refresh.
+Testing firefox/IE etc.
+Password on upload/whole site.
+	Configurable with YAML
