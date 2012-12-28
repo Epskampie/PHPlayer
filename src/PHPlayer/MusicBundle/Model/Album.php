@@ -23,12 +23,17 @@ class Album {
 
     public function hasArt()
     {
-    	return file_exists($this->getAbsolutePath().'/'.'folder.jpg');
+    	return 
+    		file_exists($this->getAbsolutePath().'/'.'folder.jpg') ||
+    		file_exists($this->getAbsolutePath().'/'.'Folder.jpg');
     }
 
     public function getArtWebPath()
     {
-    	return $this->getWebPath().'/'.'folder.jpg';
+    	if (file_exists($this->getAbsolutePath().'/'.'folder.jpg')) {
+    		return $this->getWebPath().'/'.'folder.jpg';
+    	}
+    	return $this->getWebPath().'/'.'Folder.jpg';
     }
 
     public function hasTracks() 
