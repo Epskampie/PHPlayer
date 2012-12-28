@@ -36,6 +36,10 @@ body {
 		width: 120px;
 		height: 120px;
 	}
+	.album:hover img {
+		filter: blur(10px);
+			-webkit-filter: blur(10px);
+	}
 	.album .play.icon {
 		background-image: url('../img/play_icon.png');
 	}
@@ -43,8 +47,14 @@ body {
 		float: right;
 		margin-top: 38px;
 	}
-	.album .playActions {
-
+	.album .albumName .playActions {
+		position: absolute;
+		left: 80px;
+		top: 62px;
+		display: none;
+	}
+	.album:hover .albumName .playActions {
+		display: block;
 	}
 		.album .enque.icon {
 			background-image: url('../img/enque_icon.png');

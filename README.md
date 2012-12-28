@@ -9,6 +9,7 @@ A personal grooveshark, if you will.
 Features
 --------
 
+* __ONLY WORKS IN CHROME FOR NOW__
 * Easy drag-and-drop uploading of new albums.
 * Artist and album name automatically guessed from id3 tag.
 * Rename & delete albums, artists & tracks.
