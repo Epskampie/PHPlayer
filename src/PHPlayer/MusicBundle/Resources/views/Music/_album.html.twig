@@ -1,6 +1,6 @@
 {% if album.hasTracks %}
 	<div class="artist" data-name="{{ album.artistName }}">
-	    <div class="album" data-name="{{ album.albumName }}" data-art-url="{{ asset(album.artWebPath) }}">
+	    <div class="album" data-name="{{ album.albumName }}" data-art-url="{{ album.hasArt ? asset(album.artWebPath) : asset('img/cd.png') }}">
 
 	    	<div class="albumInfo">
 		    	{% if album.hasArt %}
