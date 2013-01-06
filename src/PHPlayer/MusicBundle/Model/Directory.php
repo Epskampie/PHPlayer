@@ -99,11 +99,11 @@ class Directory {
    	 */
     private function splitName() {
 		$matches = null;
-		$success = preg_match('#^(.+) - (.+)$#U', $this->name, $matches);
+		$success = preg_match('#^(.+)( - | ~ |_-_|_~_)(.+)$#U', $this->name, $matches);
 		if ($success) {
 			return array(
 				'artist' => $matches[1],
-				'album' => $matches[2]
+				'album' => $matches[3]
 			);
 		}
 
