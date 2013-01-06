@@ -79,21 +79,42 @@ class Directory {
     }
 
     public function getArtistName() {
-    	if ($this->parent) {
+    	if ($this->level > 1) {
     		return $this->parent->getName();
     	}
-    	return 'Unknown artist';
+    	$split = $this->splitName();
+    	return $split['artist'];
     }
 
     public function getAlbumName() {
-    	if ($this->parent) {
+    	if ($this->level > 1) {
     		return $this->getName();
     	}
-    	return $this->name;
+    	$split = $this->splitName();
+    	return $split['album'];
+    }
+
+   	/**
+   	 * Split name into artist and album
+   	 */
+    private function splitName() {
+		$matches = null;
+		$success = preg_match('#^(.+) - (.+)$#U', $this->name, $matches);
+		if ($success) {
+			return array(
+				'artist' => $matches[1],
+				'album' => $matches[2]
+			);
+		}
+
+		return array(
+			'artist' => 'Unknown artist',
+			'album' => $this->name
+		);
     }
 
 	// ============ Accessors ==========
-	
+
 	public function getName() {
 	    return $this->name;
 	}
