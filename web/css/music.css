@@ -49,8 +49,8 @@ body {
 	}
 	.album .albumName .playActions {
 		position: absolute;
-		left: 80px;
-		top: 62px;
+		left: 74px;
+		top: 47px;
 		display: none;
 	}
 	.album:hover .albumName .playActions {

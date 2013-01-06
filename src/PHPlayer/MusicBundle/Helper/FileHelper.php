@@ -6,6 +6,9 @@ use \Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileHelper
 {
+
+	const ROOT_DIR = 'music';
+
 	/**
 	 * Clean filename of usafe characters
 	 * @param UploadedFile $file 
@@ -108,5 +111,25 @@ class FileHelper
 		}
 		
 		return rmdir($dir);
+	}
+
+	public static function stripExtension($filename) {
+		$dotIndex = strripos($filename, '.');
+
+    	if ($dotIndex !== false) {
+    		return substr($filename, 0, $dotIndex);
+    	} 
+
+    	return $filename;
+	}
+
+	public static function getExtension($filename) {
+		$dotIndex = strripos($filename, '.');
+
+    	if ($dotIndex !== false) {
+    		return substr($filename, $dotIndex + 1);
+    	}
+
+    	return null;
 	}
 }
