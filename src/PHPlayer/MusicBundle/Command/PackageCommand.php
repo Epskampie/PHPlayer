@@ -1,4 +1,4 @@
-<?
+<?php
 namespace PHPlayer\MusicBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
