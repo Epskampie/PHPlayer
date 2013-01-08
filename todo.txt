@@ -4,3 +4,4 @@ Upload: correct dir with #artist/album.
 Testing firefox/IE etc.
 Password on upload/whole site.
 	Configurable with YAML
+Favicon.
