@@ -13,7 +13,9 @@
 		    		{{ album.artistName }}
 		    	</div>
 		    	
-		    	{# <a class="icon upload" href="{{ path('phplayer_music_upload_index', {artistName: artist.name, albumName: album.name}) }}"></a> #}
+		    	{% if album.level == 2 %}
+		    		<a class="icon upload" href="{{ path('phplayer_music_upload_index', {artistName: album.artistName, albumName: album.albumName}) }}"></a>
+		    	{% endif %}
 
 	    		<div class="albumName">
 		    		<span class="playActions">
