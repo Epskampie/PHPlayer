@@ -5,16 +5,15 @@
 	<script type="text/javascript" src="{{ asset('js/music.js') }}"></script>
 {% endblock %}
 
-{% block topBar %}
+{#{% block topBar %}
 	<a href="{{ path('phplayer_music_upload_index') }}"><i class="icon upload"></i>Upload</a>
-{% endblock %}
+{% endblock %}#}
 
 {% block main %}
-	{% include "MusicBundle:Music:_list.html.twig" %}
 
-	{% if not haveTracks %}
-		<p>No tracks found! Why don't you try <a href="{{ path('phplayer_music_upload_index') }}">uploading</a> some albums?</p>
-	{% endif %}
+	{% for album in rootDir.children %}
+	    {% include 'MusicBundle:Music:_album.html.twig' with {album:album} only %}
+	{% endfor %}
 
 	<div class="bottomBar">
 		<div class="queWrapper">
@@ -22,4 +21,5 @@
 			</div>
 		</div>
 	</div>
+
 {% endblock %}

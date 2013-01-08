@@ -1,5 +1,6 @@
 $(function() {
 
+	// Globals
 	window.player = document.createElement('audio');
 	window.que = new Que();
 

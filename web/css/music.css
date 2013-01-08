@@ -49,8 +49,8 @@ body {
 	}
 	.album .albumName .playActions {
 		position: absolute;
-		left: 80px;
-		top: 62px;
+		left: 74px;
+		top: 47px;
 		display: none;
 	}
 	.album:hover .albumName .playActions {
@@ -147,12 +147,18 @@ body {
 			display: none;
 		}
 	#que .tile .trackViewName {
+		max-height: 2em;
+		overflow: hidden;
+
 		color: #e4e4e4;
 		font-weight: bold;
 		font-size: 18px;
 		line-height: 1.08em;
 	}
 	#que .tile .artistName {
+		max-height: 2em;
+		overflow: hidden;
+
 		color: #a5a5a5;
 		font-weight: bold;
 		font-size: 11px;
