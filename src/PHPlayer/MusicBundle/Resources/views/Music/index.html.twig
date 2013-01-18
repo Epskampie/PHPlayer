@@ -3,11 +3,13 @@
 {% block head %}
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/music.css') }}" />
 	<script type="text/javascript" src="{{ asset('js/music.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
 {% endblock %}
 
 {% block topBar %}
 	<a href="{{ path('phplayer_music_upload_index') }}"><i class="icon upload"></i>Upload</a>
 	random: {{ random }}
+	<input placeholder="Search here..." class="search" />
 {% endblock %}
 
 {% block main %}

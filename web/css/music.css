@@ -1,11 +1,23 @@
 body {
 	padding-bottom: 500px;
 }
-.topBar .upload {
-	position: relative;
-	top: 1px;
-	margin-right: 4px;
+
+.topBar {
+	
 }
+	.topBar .upload {
+		position: relative;
+		top: 1px;
+		margin-right: 4px;
+	}
+	.topBar .search {
+		float: right;
+		padding: 5px 20px;
+
+		border: 1px solid black;
+		border-radius: 20px;
+	}
+
 .album {
 	padding: 10px 30px 10px 200px;
 	min-height: 120px;

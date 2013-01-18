@@ -23,11 +23,8 @@ class MusicController extends BaseController
 
         // Set caching information
         $response->setPublic();
-        // $response->setMaxAge(600);
-        // $response->setSharedMaxAge(600);
-        // $response->headers->addCacheControlDirective('must-revalidate', true);
         $date = new \DateTime();
-        $date->modify('+600 seconds');
+        $date->modify('+2 weeks');
         $response->setExpires($date);
 
         $rootDir = new Directory(FileHelper::ROOT_DIR);
