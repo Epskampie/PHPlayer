@@ -8,6 +8,7 @@ $(function() {
 
 	$('.album').click(function() {
 		$(this).find('.tracks').slideToggle();
+		$(this).find('.tracks .track').show();
 	});
 	$('.album a').click(function(e) {
 		e.stopPropagation();

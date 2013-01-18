@@ -35,7 +35,7 @@ $(function() {
 
 	function search() {
 		var val = searchElem.val().toLowerCase();
-		var empty = val == '';
+		var empty = val === '';
 
 		$(albums).each(function(albumIndex, album) {
 			if (album.albumName.indexOf(val) == -1 && album.artistName.indexOf(val) == -1) {
