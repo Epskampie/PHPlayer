@@ -13,8 +13,8 @@ class AppCache extends HttpCache
             'default_ttl'            => 0,
             'private_headers'        => array('Authorization', 'Cookie'),
             'allow_reload'           => true,
-            'allow_revalidate'       => true,
-            'stale_while_revalidate' => 30,
+            'allow_revalidate'       => false,
+            'stale_while_revalidate' => 60,
             'stale_if_error'         => 60,
         );
     }

@@ -3,13 +3,12 @@
 namespace PHPlayer\MusicBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use PHPlayer\MusicBundle\Helper\FileHelper;
-// use PHPlayer\MusicBundle\Model\Artist;
-// use PHPlayer\MusicBundle\Model\Album;
-// use PHPlayer\MusicBundle\Model\Track;
 use PHPlayer\MusicBundle\Model\Directory;
 
 class MusicController extends BaseController
@@ -17,19 +16,30 @@ class MusicController extends BaseController
 
     /**
      * @Route("/")
-     * @Template()
      */
     public function indexAction()
     {
+        $response = new Response();
+
+        // Set caching information
+        $response->setPublic();
+        // $response->setMaxAge(600);
+        // $response->setSharedMaxAge(600);
+        // $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+        $response->setExpires($date);
+
         $rootDir = new Directory(FileHelper::ROOT_DIR);
 
-        // if (count($rootDir->getChildren()) > 0) {
-            return array(
-                'rootDir' => $rootDir
-            );
-        // } else {
-        //     return $this->redirect($this->generateUrl('phplayer_music_upload_index'));
-        // }
+        return $this->render(
+            'MusicBundle:Music:index.html.twig',
+            array(
+                'rootDir' => $rootDir,
+                'random' => rand(1,999),
+            ),
+            $response
+        );
     }
 
     /**

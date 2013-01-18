@@ -10,9 +10,9 @@ class Directory {
 	private $level = 0;
 
 	private $scanned = false;
-	private $children = array();
-	private $files = array();
-	private $tracks = array();
+	private $children = array(); // Subfolders
+	private $files = array(); // Files in this dir
+	private $tracks = array(); // Music files in this dir
 
 	public function __construct($name) {
 		$this->name = $name;
