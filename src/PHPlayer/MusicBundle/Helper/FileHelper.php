@@ -10,8 +10,9 @@ class FileHelper
 	const ROOT_DIR = 'music';
 
 	/**
-	 * Clean filename of usafe characters
-	 * @param UploadedFile $file 
+	 * Try to make string filesystem safe, so that there is no path specified (no stuff like /../.. )
+	 * @param UploadedFile    $file 
+	 * @return string         cleaned filename
 	 */
 	public static function cleanFileName(UploadedFile $file) {
 		if ($file === null) {
@@ -20,6 +21,11 @@ class FileHelper
 		return self::cleanFileNameString($file->getClientOriginalName());
 	}
 
+	/**
+	 * Try to make string filesystem safe, so that there is no path specified (no stuff like /../.. )
+	 * @param  string $dirty 
+	 * @return string         cleaned filename
+	 */
 	public static function cleanFileNameString($dirty) {
 		// Only allow a few characters
 		$clean = "";
@@ -48,7 +54,7 @@ class FileHelper
 	}
 
 	public static function moveFiles($fromDir, $toDir) {
-		self::mkdir($toDir.'/test.txt');
+		self::mkdir($toDir.'/test.txt'); // keep test.txt so that mkdir works correct
 
 		$files = scandir($fromDir);
 		foreach ($files as $file) {
@@ -89,7 +95,7 @@ class FileHelper
     }
 
     /**
-     * Create directory if it dosn't extist yet.
+     * Create directory if it doesn't exist yet.
      * 
      * @param  string $file absolute path to file or directory
      */
