@@ -11,6 +11,9 @@ $(function() {
 	update();
 
 	// Uploading on drop
+	$('.uploadArea').on('dragover dragmove', function(e) {
+		e.preventDefault();
+	});
 
 	$('.uploadArea').on('drop', function(e) {
 		e.preventDefault();
