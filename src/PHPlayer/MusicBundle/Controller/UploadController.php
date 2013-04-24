@@ -84,7 +84,6 @@ class UploadController extends BaseController
         $uploadedFile = new UploadedFile();
 
         $form = $this->createFormBuilder($uploadedFile, array('csrf_protection' => false))
-            ->setErrorBubbling(true)
             ->add('myfile', 'file')
             ->add('artist')
             ->add('album')
