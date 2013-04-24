@@ -84,6 +84,7 @@ class UploadController extends BaseController
         $uploadedFile = new UploadedFile();
 
         $form = $this->createFormBuilder($uploadedFile, array('csrf_protection' => false))
+            ->setErrorBubbling(true)
             ->add('myfile', 'file')
             ->add('artist')
             ->add('album')
@@ -106,10 +107,20 @@ class UploadController extends BaseController
 
                 return new Response('success!');
             }
-            return new Response('invalid');
+            return $this->json($this->getAllFormErrors($form), 400);
         }
 
         return array('form' => $form->createView());
+    }
+
+    private function getAllFormErrors($form, array &$errors = array()) {
+        foreach ($form->getErrors() as $error) {
+            $errors[] = $error->getMessage();
+        }
+        foreach ($form->getChildren() as $child) {
+            $this->getAllFormErrors($child, $errors);
+        }
+        return $errors;
     }
 
     /**
