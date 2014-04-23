@@ -47,6 +47,11 @@ body {
 		top: 10px;
 		width: 120px;
 		height: 120px;
+
+		border-radius: 999px;
+		box-shadow: 0 0 18px rgba(0,0,0,0.6);
+		transition: filter 0.2s,
+					-webkit-filter 0.2s;
 	}
 	.album:hover img {
 		filter: blur(10px);
@@ -127,6 +132,12 @@ body {
 	}
 		#que .tile img {
 			width: 100px;
+			height: 100px;
+			margin-bottom: 10px;
+
+			border-radius: 999px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.4);
+			transition: box-shadow 0.5s;
 		}
 		#que .active.tile img {
 			box-shadow: 0 0 20px rgba(16, 179, 255, 0.7);
@@ -135,8 +146,8 @@ body {
 		#que .tile .play,
 		#que .tile .pause {
 			position: absolute;
-			top: 20px;
-			left: 25px;
+			top: 25px;
+			left: 32px;
 			width: 60px;
 			height: 60px;
 			background: top right no-repeat;

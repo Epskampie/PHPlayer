@@ -8,7 +8,7 @@ class UploadedFile {
 
 	/**
      * @Assert\File(
-     *     maxSize = "10M",
+     *     maxSize = "50M",
      *     mimeTypes = {
      *     		"audio/mpeg", 
      *     		"audio/x-mpeg-3", 

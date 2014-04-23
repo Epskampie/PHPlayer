@@ -11,6 +11,9 @@ $(function() {
 	update();
 
 	// Uploading on drop
+	$('.uploadArea').on('dragover dragmove', function(e) {
+		e.preventDefault();
+	});
 
 	$('.uploadArea').on('drop', function(e) {
 		e.preventDefault();
@@ -35,6 +38,10 @@ $(function() {
 		xhr.onload = function(e) {
 			console.log('Uploading successfull!', xhr);
 			//handleComplete(file.size);
+			if (xhr.status != 200) {
+				var errors = JSON.parse(xhr.response);
+				alert(errors.join("\n"));
+			}
 		};
 		xhr.onerror = function() {
 			console.log('Error uploading file');
